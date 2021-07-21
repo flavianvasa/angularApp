@@ -1,0 +1,19 @@
+<div class="my-dialog">
+<h1 md-dialog-title>{{message}}</h1>
+<h2 md-dialog-content>{{confirmMessage}}</h2>
+<div *ngIf="bool"class="inline">Do you want to stay in this page and update status?</div>
+<div *ngIf="bool1"class="inline">Do you want to update the issue you selected?</div>
+<button class="inline" *ngIf="!bool && !bool1 " mat-button mat-dialog-close>Close</button>
+<div class="inline" *ngIf="bool" ><button  mat-button mat-dialog-close tabindex="2">Yes</button></div>
+<div class="inline" *ngIf="bool1" ><button  mat-button mat-dialog-close tabindex="2">Yes</button></div>
+</div>
+<div *ngIf="bool" mat-dialog-actions>
+    <div>Do you want to leave the page?<button mat-button (click)="onClick('A')" tabindex="1">Leave</button></div>
+    
+    
+  </div>
+  <div *ngIf="bool1" mat-dialog-actions>
+    <div>Do you want to quit updating the issue?<button mat-button (click)="onClick('A')" tabindex="1">Leave</button></div>
+    
+    
+  </div>

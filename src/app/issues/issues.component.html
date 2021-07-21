@@ -1,0 +1,227 @@
+<div class="mat-elevation-z8">
+  
+  <table mat-table [dataSource]="pageSlice">
+
+
+    <ng-container matColumnDef="1">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-toolbar>
+          <span>Filter by status</span>
+        </mat-toolbar>
+      </th>
+    </ng-container>
+
+    <ng-container matColumnDef="2">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-toolbar>
+          <span>Filter by reporter</span>
+        </mat-toolbar>
+      </th>
+    </ng-container>
+
+    <ng-container matColumnDef="3">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-toolbar>
+          <span>Filter by type</span>
+        </mat-toolbar>
+      </th>
+    </ng-container>
+
+    <ng-container matColumnDef="4">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-toolbar>
+          <span>Filter by developer</span>
+        </mat-toolbar>
+      </th>
+    </ng-container>
+
+
+    <ng-container matColumnDef="FilterBystatus">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-form-field appearance="outline">
+          <mat-select [(value)]="selected1" [formControl]="statusControl">
+
+
+            <mat-option value="reported">Reported</mat-option>
+            <mat-option value="opened">Opened</mat-option>
+            <mat-option value="in progress">In progress</mat-option>
+            <mat-option value="solved">Solved</mat-option>
+
+          </mat-select>
+
+        </mat-form-field>
+      </th>
+    </ng-container>
+
+
+    <ng-container matColumnDef="FilterByRepoter">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-form-field appearance="outline">
+          <mat-select [(value)]="selected2" [formControl]="reporterControl">
+
+
+            <mat-option value="reporter1">reporter1</mat-option>
+            <mat-option value="reporter2">reporter2</mat-option>
+            <mat-option value="reporter3">reporter3</mat-option>
+            <mat-option value="reporter4">reporter4</mat-option>
+
+          </mat-select>
+        </mat-form-field>
+      </th>
+    </ng-container>
+
+
+    <ng-container matColumnDef="FilterByType">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-form-field appearance="outline">
+          <mat-select [(value)]="selected3" [formControl]="typeControl">
+
+
+            <mat-option value="bug">Bug</mat-option>
+            <mat-option value="task">Task</mat-option>
+            <mat-option value="update">Update</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </th>
+    </ng-container>
+
+
+
+    <ng-container matColumnDef="FilterByDeveloper">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-form-field appearance="outline">
+          <mat-select [(value)]="selected4" [formControl]="developerControl">
+
+
+
+            <mat-option value="developer1">developer1</mat-option>
+            <mat-option value="developer2">developer2</mat-option>
+            <mat-option value="developer3">developer3</mat-option>
+            <mat-option value="developer4">developer4</mat-option>
+
+          </mat-select>
+        </mat-form-field>
+      </th>
+    </ng-container>
+
+
+
+
+
+
+
+
+
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="_id">
+      <th mat-header-cell *matHeaderCellDef> Id </th>
+      <td mat-cell *matCellDef="let element"> {{element._id}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef> Status </th>
+      <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="issue">
+      <th mat-header-cell *matHeaderCellDef> Issue </th>
+      <td mat-cell *matCellDef="let element">
+        <mat-card>
+          <mat-card-content>{{element.issue}}</mat-card-content>
+        </mat-card>
+      </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef> Type </th>
+      <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="author">
+      <th mat-header-cell *matHeaderCellDef>Author </th>
+      <td mat-cell *matCellDef="let element"> {{element.author}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="developer">
+      <th mat-header-cell *matHeaderCellDef> Developer </th>
+      <td mat-cell *matCellDef="let element"> {{element.developer}} </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="['1','2','3','4']" class="example">
+    </tr>
+    <tr mat-header-row *matHeaderRowDef="['FilterBystatus','FilterByRepoter','FilterByType','FilterByDeveloper']"
+      class="example-second-header-row">
+    </tr>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="add(row)"
+      [class.demo-row-is-clicked]="clickedRows.has(row)"
+      [ngClass]="{'reported': row.status === reported,'opened': row.status === opened,'inprogress': row.status === progress,'solved': row.status === solved}">
+    </tr>
+  </table>
+
+  <mat-paginator [length]="dataSource.length" [pageSize]="5" [pageSizeOptions]="[5, 10, 20]"
+    (page)="OnPageChange($event)"></mat-paginator>
+
+
+</div>
+
+
+<h2>
+  Click the row you want to update. <span [style.backgroundColor]="'red'">Only the author of the issue can update the
+    issue.</span>
+</h2>
+
+
+<div *ngIf="!clickedRows.size">
+  Clicked rows will be logged here
+</div>
+
+
+<div  *ngFor="let clickedRow of clickedRows">
+  <h1>
+    <form [formGroup]="form" (ngSubmit)="onSubmit(clickedRow._id)"> 
+    
+    <mat-form-field appearance="outline">ID: <mat-divider></mat-divider><input matInput [readonly]="true" type="text"   [value]="clickedRow._id" > </mat-form-field>
+    <mat-form-field appearance="outline"> STATUS:<mat-divider></mat-divider><mat-select formControlName="status" >
+        <mat-option value="reported">Reported</mat-option>
+        <mat-option value="opened">Opened</mat-option>
+        <mat-option value="in progress">In progress</mat-option>
+        <mat-option value="solved">Solved</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline"> ISSUE:<mat-divider></mat-divider><input matInput formControlName="issue" type="text"
+        [value]="clickedRow.issue"> </mat-form-field>
+    <mat-form-field appearance="outline"> TYPE:<mat-divider></mat-divider>
+      <mat-select  formControlName="type" >
+
+
+        <mat-option value="bug">Bug</mat-option>
+        <mat-option value="task">Task</mat-option>
+        <mat-option value="update">Update</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline"> AUTHOR<mat-divider></mat-divider><input matInput type="text" [readonly]="true"
+        [value]="clickedRow.author"> </mat-form-field>
+    <mat-form-field appearance="outline"> DEVELOPER:<mat-divider></mat-divider>   <mat-select formControlName="developer"  >
+
+
+
+      <mat-option value="developer1">developer1</mat-option>
+      <mat-option value="developer2">developer2</mat-option>
+      <mat-option value="developer3">developer3</mat-option>
+      <mat-option value="developer4">developer4</mat-option>
+
+    </mat-select></mat-form-field>
+    <button type="submit" mat-raised-button color="accent">Update</button>
+    </form>
+  </h1>
+
+</div>
+
+
+

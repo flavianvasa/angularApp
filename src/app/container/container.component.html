@@ -1,0 +1,26 @@
+
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+    <span>Issue Tracker</span>
+    <span class="example-spacer"></span>
+    <button mat-raised-button color="primary" routerLink="issues">Show Issues</button>
+    </mat-toolbar-row>
+    <mat-toolbar-row >
+      <span> Private Section For Specific User Role</span>
+      <span class="example-spacer"></span>
+      <button mat-raised-button color="primary" routerLink="page-with-subpages" >Show</button></mat-toolbar-row>
+  
+  <mat-toolbar-row >
+    <span> Hide Content Below  The Toolbar </span>
+    <span class="example-spacer"></span>
+    <button mat-raised-button color="primary" [routerLink]="['/container']" >Hide</button></mat-toolbar-row>
+    
+  <mat-toolbar-row >
+    <span> Log Out </span>
+    <span class="example-spacer"></span>
+    <button mat-raised-button color="primary" (click)="myfunction()" >Log Out</button></mat-toolbar-row>
+</mat-toolbar>
+<div class="main">
+  <router-outlet ></router-outlet>
+</div>
+  

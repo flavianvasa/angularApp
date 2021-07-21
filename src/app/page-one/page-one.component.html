@@ -1,0 +1,64 @@
+<div class="randomClass">
+<form [formGroup]="form" >
+  <div class="a">
+    <div class="b">
+<label>Status</label>
+    <mat-form-field appearance="fill" >
+         <mat-select [disabled]='true'  formControlName="status" >
+        <mat-option value="reported">Reported</mat-option>
+      </mat-select>
+      
+    </mat-form-field>
+  </div>
+</div>
+<div class="a">
+  <div class="b">
+    <!-- <div class="c"> -->
+  <label>Issue</label>
+  <mat-form-field appearance="fill">
+  <mat-label [textContent] = "txt">Textarea</mat-label>
+  <textarea matInput  formControlName="issue"></textarea >
+    </mat-form-field>
+</div>
+<span [textContent] ='span1'></span>
+</div>
+<!-- </div> -->
+
+<div class="a">
+  <div class="b">
+  <label>Type</label>
+ <!-- <div class="c"> -->
+<mat-form-field appearance="fill">
+<mat-select [value]="selected1" formControlName="type">
+ <mat-option value="bug">Bug</mat-option>
+    <mat-option value="task">Task</mat-option>
+    <mat-option value="update">Update</mat-option>
+  </mat-select>
+</mat-form-field>
+</div>
+<span [textContent] ='span2'></span>
+</div>
+<!-- </div> -->
+
+<div class="a">
+  <div class="b">
+  <label>Developer</label>
+  <!-- <div class="c"> -->
+  <mat-form-field appearance="fill">
+    <mat-select [value]="selected2"   formControlName="developer">
+ <mat-option value="developer1">developer1</mat-option>
+      <mat-option value="developer2">developer2</mat-option>
+      <mat-option value="developer3">developer3</mat-option>
+      <mat-option value="developer4">developer4</mat-option>
+
+    </mat-select>
+  </mat-form-field>
+  
+</div>
+<span [textContent] ='span3'></span>
+</div>
+<!-- </div> -->
+  </form>
+  
+<button  type="submit" (click)="onSubmit()" mat-raised-button color="primary">Insert</button>
+</div>

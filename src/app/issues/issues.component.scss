@@ -1,0 +1,54 @@
+.mat-elevation-z8{
+    width: 40%;
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+}
+  .mat-cell,.mat-header-cell {
+    padding: 5px;
+  }
+  .mat-column-_id{
+    font-size: large;
+    font-weight: bolder;
+  }
+  
+  
+  .example-second-header-row th , .example th {
+    border-bottom: none;
+  }
+table {
+  width: 100%;
+  border: 1px solid ;
+  
+}
+.example-first-header-row th {
+  border-bottom: none;
+}
+.reported{
+  background-color: slategrey;
+}
+.opened{
+  background-color: yellow;
+}
+.inprogress{
+  background-color: orange;
+}
+.solved{
+  background-color: green;
+}
+.mat-row:hover .mat-cell {
+  border-color: currentColor;
+}
+
+.demo-row-is-clicked {
+  font-weight: bold;
+}
+// :host {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: flex-start;
+// }
+
+
+
+

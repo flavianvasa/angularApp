@@ -1,0 +1,19 @@
+<!-- <p>page-with-subpages works!</p>
+<button mat-button [matMenuTriggerFor]="menu" #clickHoverMenuTrigger="matMenuTrigger" (mouseover)="someMethod()">Menu</button>
+<mat-menu #menu="matMenu">
+  <button routerLink='page-1' mat-menu-item>Item 1</button>
+  <button routerLink='page-2' mat-menu-item>Item 2</button>
+  <button routerLink='page-2' mat-menu-item>Item 1</button>
+  <button routerLink='page-' mat-menu-item>Item 2</button>
+</mat-menu> -->
+<mat-tab-group  (selectedTabChange)="onTabPanelClick($event)">
+  
+  <!-- <mat-tab label="Private">  </mat-tab> -->
+
+  <mat-tab  label="Add Issue"> <h2 >This section here is only for Reporters:<a routerLink='page-1' style="font-size: large;font-weight: bolder;text-decoration: none;">Show</a> </h2> </mat-tab>
+  <mat-tab label="List Developer Issues">  <h2 >This section here is only for Reporters:<a routerLink='page-2' style="font-size: large;font-weight: bolder;text-decoration: none;">Show</a> </h2> </mat-tab>
+  <mat-tab label="Update Status By Developer"> <h2 >This section here is only for Reporters:<a routerLink='page-3' style="font-size: large;font-weight: bolder;text-decoration: none;">Show</a> </h2>  </mat-tab>
+ <mat-tab label="Hide"> <button mat-raised-button (click)="hide"></button></mat-tab>
+</mat-tab-group>
+
+<router-outlet   ></router-outlet>

@@ -6,5 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'angularApp';
+  // bool=false;
+  // bool1=true;
+  // myfunction($event:any){
+  //   console.log($event)
+    
+  //     this.bool=$event;
+    
+  // }
+  // myfn($event:any){
+  //   this.bool1=$event;
+
+  // }
 }

@@ -1,0 +1,15 @@
+<div>
+<mat-list role="list" *ngFor="let element of pageSlice">
+    <mat-action-list>
+     <a [routerLink]='["../"]' [queryParams]="{p1: element._id}" >Update Status</a>
+     </mat-action-list>
+    <mat-list-item role="listitem" ><mat-chip-list><mat-chip >Issue:{{element.issue}}</mat-chip></mat-chip-list></mat-list-item>
+    <mat-list-item role="listitem" > <mat-chip-list><mat-chip >Status:{{element.status}}</mat-chip></mat-chip-list></mat-list-item>
+    <mat-list-item role="listitem"><mat-chip-list><mat-chip >Type:{{element.type}}</mat-chip></mat-chip-list></mat-list-item>
+    <mat-list-item role="listitem"><mat-chip-list><mat-chip >Author:{{element.author}}</mat-chip></mat-chip-list></mat-list-item>
+  </mat-list>
+  <br><br><mat-divider></mat-divider>
+  
+<mat-paginator [length]="dataSource.length" [pageSize]="3" [pageSizeOptions]="[3, 6, 9]"
+    (page)="OnPageChange($event)"></mat-paginator>
+</div>

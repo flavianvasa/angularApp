@@ -1,0 +1,27 @@
+<pre class="bool" *ngIf="!bool" >
+    Hello Developer,
+     you need to to go to "List Developer Issues" and select an issue you want to update its status,
+      then you will be redirected here...
+                            to update the status.
+</pre>
+
+<div class="opositebool" *ngIf="bool">
+    
+      <div>
+    <mat-form-field appearance="outline">
+        <mat-select  [formControl]="statusControl">
+
+
+          
+          <mat-option value="opened">Opened</mat-option>
+          <mat-option value="in progress">In progress</mat-option>
+          <mat-option value="solved">Solved</mat-option>
+
+        </mat-select>
+      </mat-form-field>
+      <span [textContent]="span"></span>
+    </div>
+    
+    <button (click)="onSubmit()" mat-raised-button color="primary">Update</button>
+
+</div>
